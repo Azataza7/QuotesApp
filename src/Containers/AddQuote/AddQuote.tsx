@@ -1,11 +1,12 @@
-import React, {useCallback, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, {useCallback, useEffect, useState} from 'react';
+import {useNavigate, useParams} from 'react-router-dom';
 import {NewQuote} from '../../types';
 import axiosApi from '../../axiosApi';
 import Spinner from '../../Components/Spinner/Spinner';
 
 const AddQuote: React.FC = () => {
   const navigate = useNavigate();
+  const params = useParams();
   const [loading, setLoading] = useState(false);
 
   const [newQuote, setNewQuote] = useState<NewQuote>({
@@ -13,6 +14,24 @@ const AddQuote: React.FC = () => {
     category: '',
     text: '',
   });
+
+  useEffect(() => {
+    const fetchEditData = async () => {
+      if (params.articleId) {
+        setLoading(true);
+        try {
+          const response = await axiosApi.get(`quotes/${params.articleId}.json`)
+          const fetchedQuote = response.data;
+          setNewQuote(fetchedQuote);
+        } catch (e) {
+          console.log('Error' + e)
+        } finally {
+          setLoading(false)
+        }
+      }
+    };
+    void fetchEditData()
+  }, [params.articleId]);
 
   const quoteChanged = useCallback((event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {name, value} = event.target;
@@ -28,10 +47,14 @@ const AddQuote: React.FC = () => {
     setLoading(true);
 
     try {
-      await axiosApi.post('quotes.json', newQuote)
-      navigate('/')
+      if (params.articleId) {
+        await axiosApi.put(`quotes/${params.articleId}.json`, newQuote);
+      } else {
+        await axiosApi.post('quotes.json', newQuote);
+      }
+      navigate('/');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   };
 
@@ -57,7 +80,7 @@ const AddQuote: React.FC = () => {
           value={newQuote.category}
         >
           <option value="" disabled hidden>Choose category</option>
-          <option value="star-wars" >Star Wars</option>
+          <option value="star-wars">Star Wars</option>
           <option value="motivational"> Motivational</option>
           <option value="famous-people">Famous people</option>
           <option value="saying">Saying</option>
@@ -78,7 +101,7 @@ const AddQuote: React.FC = () => {
   );
 
   if (loading) {
-    form = <Spinner/>
+    form = <Spinner/>;
   }
 
   return (

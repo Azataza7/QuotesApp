@@ -7,7 +7,6 @@ import '../Componets.css';
 
 
 const App = () => {
-
   return (
     <>
       <header>
@@ -39,7 +38,6 @@ const App = () => {
           </Routes>
         </div>
       </main>
-
     </>
   );
 };

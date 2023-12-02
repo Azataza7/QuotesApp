@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axiosApi from '../../axiosApi';
 import Spinner from '../Spinner/Spinner';
-import {Quote} from '../../types';
+import {Quote, QuotesList} from '../../types';
 import {useNavigate, useParams} from 'react-router-dom';
 import QuotesItem from './QuotesItem';
 
@@ -23,7 +23,7 @@ const Quotes = () => {
       }
 
       const response = await axiosApi.get(url);
-      const data = response.data;
+      const data: QuotesList = response.data;
 
       const quotesArray = Object.keys(data).map((quoteItem) => ({
         id: quoteItem,
@@ -41,8 +41,6 @@ const Quotes = () => {
   useEffect(() => {
     void fetchData();
   }, [category]);
-
-  console.log(quotesList);
 
   const handleDelete = async (quoteId: string) => {
     try {
