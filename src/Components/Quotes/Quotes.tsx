@@ -52,12 +52,14 @@ const Quotes = () => {
   };
 
   let quotes = quotesList.map((quoteItem) => (
-    <QuotesItem key={quoteItem.id} quoteData={quoteItem} onDelete={() => handleDelete(quoteItem.id)} />
+    <QuotesItem key={quoteItem.id} quoteData={quoteItem} onDelete={() => handleDelete(quoteItem.id)}/>
   ));
+
+  let categoryTitle = category ? `${category} Quotes` : 'All quotes';
 
   return (
     <div>
-      <h3>All quotes</h3>
+      <h3>{categoryTitle}</h3>
       {loading ? <Spinner/> : quotes}
     </div>
   );
