@@ -2,19 +2,27 @@ import React, {useEffect, useState} from 'react';
 import axiosApi from '../../axiosApi';
 import Spinner from '../Spinner/Spinner';
 import {Quote} from '../../types';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import QuotesItem from './QuotesItem';
 
 const Quotes = () => {
   const [quotesList, setQuotesList] = useState<Quote[]>([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { category } = useParams();
+
 
   const fetchData = async () => {
     setLoading(true);
 
     try {
-      const response = await axiosApi.get('quotes.json');
+      let url = 'quotes.json';
+
+      if (category) {
+        url += `?orderBy="category"&equalTo="${category}"`
+      }
+
+      const response = await axiosApi.get(url);
       const data = response.data;
 
       const quotesArray = Object.keys(data).map((quoteItem) => ({
@@ -32,7 +40,7 @@ const Quotes = () => {
 
   useEffect(() => {
     void fetchData();
-  }, []);
+  }, [category]);
 
   console.log(quotesList);
 

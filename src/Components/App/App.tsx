@@ -5,6 +5,7 @@ import QuotesList from '../../Containers/QuotesList/QuotesList';
 import Sidebar from '../Sidebar/Sidebar';
 import '../Componets.css';
 
+
 const App = () => {
 
   return (
@@ -21,7 +22,13 @@ const App = () => {
             <Route path="/" element={(
               <QuotesList/>
             )}/>
+            <Route path="/category/:category" element={(
+              <QuotesList/>
+            )}/>
             <Route path="/add-quote" element={(
+              <AddQuote/>
+            )}/>
+            <Route path="/quotes/:articleId/edit" element={(
               <AddQuote/>
             )}/>
             <Route path="*" element={(
