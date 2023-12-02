@@ -3,10 +3,11 @@ import {Quote} from '../../types';
 import {Link} from 'react-router-dom';
 
 interface Props {
-  quoteData: Quote
+  quoteData: Quote;
+  onDelete: () => void;
 }
 
-const QuotesItem: React.FC<Props> = ({quoteData}) => {
+const QuotesItem: React.FC<Props> = ({quoteData, onDelete}) => {
   return (
     <div className="quote-block d-flex justify-content-between">
       <div className="quote-info">
@@ -14,8 +15,8 @@ const QuotesItem: React.FC<Props> = ({quoteData}) => {
         <span className="author">Author: {quoteData.author}</span>
       </div>
       <div className="control-btn d-flex flex-column gap-2">
-        <Link to={"/"} className="btn btn-danger delete-btn"/>
-        <Link to={"/"} className="btn btn-secondary edit-btn"/>
+        <Link to={'/'} className="btn btn-danger delete-btn" onClick={onDelete}/>
+        <Link to={'/'} className="btn btn-secondary edit-btn"/>
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ const App = () => {
         </aside>
         <div className="content">
           <Routes>
-            <Route path="/quotes" element={(
+            <Route path="/" element={(
               <QuotesList/>
             )}/>
             <Route path="/add-quote" element={(

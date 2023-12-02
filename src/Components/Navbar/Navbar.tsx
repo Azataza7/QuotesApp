@@ -9,7 +9,7 @@ const Navbar = () => {
           <a className="navbar-brand logo" href="#"/>
 
           <div className="nav-item fw-bold d-flex gap-2">
-            <NavLink to="quotes" className="nav-link" href="#">Quotes</NavLink>
+            <NavLink to="/" className="nav-link" href="#">Quotes</NavLink>
             <NavLink to="add-quote" className="nav-link" href="#">Submit new quote</NavLink>
           </div>
         </div>
