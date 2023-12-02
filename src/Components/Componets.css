@@ -1,0 +1,41 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 0;
+}
+
+.content {
+  flex-basis: 70%;
+}
+
+.sidebar-container a {
+  font-size: 20px;
+  text-decoration: none;
+  padding-bottom: 10px;
+}
+
+.form-group {
+ padding-bottom: 30px;
+}
+
+.form-group label {
+  display: block;
+}
+
+.text-area {
+  overflow-y: scroll;
+  height: 250px;
+}
+
+#category {
+  border-radius: 5px;
+}
+
+.logo {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url("https://pbs.twimg.com/profile_images/446356636710363136/OYIaJ1KK_400x400.png") no-repeat;
+  background-size: contain;
+  border-radius: 50%;
+}

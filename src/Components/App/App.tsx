@@ -3,6 +3,7 @@ import Navbar from '../Navbar/Navbar';
 import AddQuote from '../../Containers/AddQuote/AddQuote';
 import QuotesList from '../../Containers/QuotesList/QuotesList';
 import Sidebar from '../Sidebar/Sidebar';
+import '../Componets.css';
 
 const App = () => {
 
