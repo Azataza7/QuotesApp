@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {NewQuote} from '../../types';
+import {Quote} from '../../types';
 import axiosApi from '../../axiosApi';
 import Spinner from '../../Components/Spinner/Spinner';
 
@@ -8,7 +8,7 @@ const AddQuote: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-  const [newQuote, setNewQuote] = useState<NewQuote>({
+  const [newQuote, setNewQuote] = useState<Quote>({
     author: '',
     category: '',
     text: '',

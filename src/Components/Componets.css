@@ -39,3 +39,41 @@
   background-size: contain;
   border-radius: 50%;
 }
+
+.delete-btn {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: url("././images/delete_icon.svg") no-repeat center;
+}
+
+.edit-btn {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: url("././images/edit_icon.svg") no-repeat center;
+}
+
+.quote-block {
+  border: 2px solid dodgerblue;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+}
+
+.quote-info {
+  flex-basis: 90%;
+}
+
+.quote-block .text {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.quote-block .author {
+  text-align: right;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: grey;
+  color: white;
+}
