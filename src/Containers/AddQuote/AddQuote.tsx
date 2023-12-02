@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
-import {NewQuote} from '../../types';
+import {NewQuote, Quote} from '../../types';
 import axiosApi from '../../axiosApi';
 import Spinner from '../../Components/Spinner/Spinner';
 
@@ -21,7 +21,7 @@ const AddQuote: React.FC = () => {
         setLoading(true);
         try {
           const response = await axiosApi.get(`quotes/${params.articleId}.json`)
-          const fetchedQuote = response.data;
+          const fetchedQuote: Quote = response.data;
           setNewQuote(fetchedQuote);
         } catch (e) {
           console.log('Error' + e)

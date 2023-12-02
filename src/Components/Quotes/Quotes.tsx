@@ -25,7 +25,7 @@ const Quotes = () => {
       const response = await axiosApi.get(url);
       const data: QuotesList = response.data;
 
-      const quotesArray = Object.keys(data).map((quoteItem) => ({
+      const quotesArray: Quote[] = Object.keys(data).map((quoteItem) => ({
         id: quoteItem,
         ...data[quoteItem],
       }));
@@ -47,7 +47,7 @@ const Quotes = () => {
       await axiosApi.delete(`quotes/${quoteId}.json`);
       await fetchData();
     } catch (error) {
-      console.error('Error deleting quote:', error);
+      console.log('Error deleting quote:', error);
     }
   };
 
